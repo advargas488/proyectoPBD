@@ -1,0 +1,839 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="pokedexFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bitácora">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Descripción" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Identificador_E" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Núm_Cédula_C" />
+          </Key>
+          <Property Name="Núm_Cédula_C" Type="int" Nullable="false" />
+          <Property Name="Nombre_C" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Apellido1" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Apellido2" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Núm_Teléfono" Type="int" Nullable="false" />
+          <Property Name="Provincia" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Cantón" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Distrito" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Otras_señas" Type="varchar" MaxLength="80" />
+          <Property Name="Correo_Electrónico" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Ubicación" Type="varchar" MaxLength="30" />
+          <Property Name="Nombre_Usuario" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Entrenador">
+          <Key>
+            <PropertyRef Name="Identificador_E" />
+          </Key>
+          <Property Name="Identificador_E" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nombre_E" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Apellido1" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Apellido2" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Núm_Teléfono" Type="int" Nullable="false" />
+          <Property Name="Provincia" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Cantón" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Distrito" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Otras_señas" Type="varchar" MaxLength="100" />
+          <Property Name="Correo_Electrónico" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Ubicación" Type="varchar(max)" />
+          <Property Name="Sitio_Web" Type="varchar" MaxLength="100" />
+          <Property Name="Nombre_Usuario" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Entrenador_Pokemon">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Identificador_E" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Identificador_P" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="11" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Entrenador_Pokemon_Movimiento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Identificador_E" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Identificador_P" Type="int" Nullable="false" />
+          <Property Name="Código_M" Type="varchar" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Movimiento">
+          <Key>
+            <PropertyRef Name="Código_M" />
+          </Key>
+          <Property Name="Código_M" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="Nombre_M" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripción" Type="varchar" MaxLength="200" />
+          <Property Name="Tipo" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Movimiento_Pokemon">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Identificador_P" Type="int" Nullable="false" />
+          <Property Name="Código_M" Type="varchar" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pokemon">
+          <Key>
+            <PropertyRef Name="Identificador_P" />
+          </Key>
+          <Property Name="Identificador_P" Type="int" Nullable="false" />
+          <Property Name="Nombre_P" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Tipo1" Type="varchar" MaxLength="30" />
+          <Property Name="Tipo2" Type="varchar" MaxLength="30" />
+          <Property Name="Total" Type="int" Nullable="false" />
+          <Property Name="Salud" Type="int" Nullable="false" />
+          <Property Name="Ataque" Type="int" Nullable="false" />
+          <Property Name="Defensa" Type="int" Nullable="false" />
+          <Property Name="Ataque_Especial" Type="int" Nullable="false" />
+          <Property Name="Defensa_Especial" Type="int" Nullable="false" />
+          <Property Name="Velocidad" Type="int" Nullable="false" />
+          <Property Name="Generación" Type="int" Nullable="false" />
+          <Property Name="Legendario" Type="varchar" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Redes_Sociales_E">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Red_Social" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nombre_RS" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nombre_Usuario" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Identificador_E" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Nombre_Usuario" />
+          </Key>
+          <Property Name="Nombre_Usuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Contraseña" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="Rol" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Bitácora__Identi__44FF419A">
+          <End Role="Entrenador" Type="Self.Entrenador" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Bitácora" Type="Self.Bitácora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entrenador">
+              <PropertyRef Name="Identificador_E" />
+            </Principal>
+            <Dependent Role="Bitácora">
+              <PropertyRef Name="Identificador_E" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cliente__Nombre___5441852A">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Nombre_Usuario" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="Nombre_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Entrenado__Códig__4E88ABD4">
+          <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Entrenador_Pokemon_Movimiento" Type="Self.Entrenador_Pokemon_Movimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movimiento">
+              <PropertyRef Name="Código_M" />
+            </Principal>
+            <Dependent Role="Entrenador_Pokemon_Movimiento">
+              <PropertyRef Name="Código_M" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Entrenado__Ident__48CFD27E">
+          <End Role="Entrenador" Type="Self.Entrenador" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Entrenador_Pokemon" Type="Self.Entrenador_Pokemon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entrenador">
+              <PropertyRef Name="Identificador_E" />
+            </Principal>
+            <Dependent Role="Entrenador_Pokemon">
+              <PropertyRef Name="Identificador_E" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Entrenado__Ident__49C3F6B7">
+          <End Role="Pokemon" Type="Self.Pokemon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Entrenador_Pokemon" Type="Self.Entrenador_Pokemon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokemon">
+              <PropertyRef Name="Identificador_P" />
+            </Principal>
+            <Dependent Role="Entrenador_Pokemon">
+              <PropertyRef Name="Identificador_P" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Entrenado__Ident__4CA06362">
+          <End Role="Entrenador" Type="Self.Entrenador" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Entrenador_Pokemon_Movimiento" Type="Self.Entrenador_Pokemon_Movimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entrenador">
+              <PropertyRef Name="Identificador_E" />
+            </Principal>
+            <Dependent Role="Entrenador_Pokemon_Movimiento">
+              <PropertyRef Name="Identificador_E" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Entrenado__Ident__4D94879B">
+          <End Role="Pokemon" Type="Self.Pokemon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Entrenador_Pokemon_Movimiento" Type="Self.Entrenador_Pokemon_Movimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokemon">
+              <PropertyRef Name="Identificador_P" />
+            </Principal>
+            <Dependent Role="Entrenador_Pokemon_Movimiento">
+              <PropertyRef Name="Identificador_P" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Entrenado__Nombr__37A5467C">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Entrenador" Type="Self.Entrenador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Nombre_Usuario" />
+            </Principal>
+            <Dependent Role="Entrenador">
+              <PropertyRef Name="Nombre_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Movimient__Códig__3F466844">
+          <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Movimiento_Pokemon" Type="Self.Movimiento_Pokemon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movimiento">
+              <PropertyRef Name="Código_M" />
+            </Principal>
+            <Dependent Role="Movimiento_Pokemon">
+              <PropertyRef Name="Código_M" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Movimient__Ident__3E52440B">
+          <End Role="Pokemon" Type="Self.Pokemon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Movimiento_Pokemon" Type="Self.Movimiento_Pokemon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokemon">
+              <PropertyRef Name="Identificador_P" />
+            </Principal>
+            <Dependent Role="Movimiento_Pokemon">
+              <PropertyRef Name="Identificador_P" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Redes_Soc__Ident__5DCAEF64">
+          <End Role="Entrenador" Type="Self.Entrenador" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Redes_Sociales_E" Type="Self.Redes_Sociales_E" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entrenador">
+              <PropertyRef Name="Identificador_E" />
+            </Principal>
+            <Dependent Role="Redes_Sociales_E">
+              <PropertyRef Name="Identificador_E" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="pokedexFModelStoreContainer">
+          <EntitySet Name="Bitácora" EntityType="Self.Bitácora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Entrenador" EntityType="Self.Entrenador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Entrenador_Pokemon" EntityType="Self.Entrenador_Pokemon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Entrenador_Pokemon_Movimiento" EntityType="Self.Entrenador_Pokemon_Movimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Movimiento" EntityType="Self.Movimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Movimiento_Pokemon" EntityType="Self.Movimiento_Pokemon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pokemon" EntityType="Self.Pokemon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Redes_Sociales_E" EntityType="Self.Redes_Sociales_E" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Bitácora__Identi__44FF419A" Association="Self.FK__Bitácora__Identi__44FF419A">
+            <End Role="Entrenador" EntitySet="Entrenador" />
+            <End Role="Bitácora" EntitySet="Bitácora" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cliente__Nombre___5441852A" Association="Self.FK__Cliente__Nombre___5441852A">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Entrenado__Códig__4E88ABD4" Association="Self.FK__Entrenado__Códig__4E88ABD4">
+            <End Role="Movimiento" EntitySet="Movimiento" />
+            <End Role="Entrenador_Pokemon_Movimiento" EntitySet="Entrenador_Pokemon_Movimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Entrenado__Ident__48CFD27E" Association="Self.FK__Entrenado__Ident__48CFD27E">
+            <End Role="Entrenador" EntitySet="Entrenador" />
+            <End Role="Entrenador_Pokemon" EntitySet="Entrenador_Pokemon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Entrenado__Ident__49C3F6B7" Association="Self.FK__Entrenado__Ident__49C3F6B7">
+            <End Role="Pokemon" EntitySet="Pokemon" />
+            <End Role="Entrenador_Pokemon" EntitySet="Entrenador_Pokemon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Entrenado__Ident__4CA06362" Association="Self.FK__Entrenado__Ident__4CA06362">
+            <End Role="Entrenador" EntitySet="Entrenador" />
+            <End Role="Entrenador_Pokemon_Movimiento" EntitySet="Entrenador_Pokemon_Movimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Entrenado__Ident__4D94879B" Association="Self.FK__Entrenado__Ident__4D94879B">
+            <End Role="Pokemon" EntitySet="Pokemon" />
+            <End Role="Entrenador_Pokemon_Movimiento" EntitySet="Entrenador_Pokemon_Movimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Entrenado__Nombr__37A5467C" Association="Self.FK__Entrenado__Nombr__37A5467C">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Entrenador" EntitySet="Entrenador" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Movimient__Códig__3F466844" Association="Self.FK__Movimient__Códig__3F466844">
+            <End Role="Movimiento" EntitySet="Movimiento" />
+            <End Role="Movimiento_Pokemon" EntitySet="Movimiento_Pokemon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Movimient__Ident__3E52440B" Association="Self.FK__Movimient__Ident__3E52440B">
+            <End Role="Pokemon" EntitySet="Pokemon" />
+            <End Role="Movimiento_Pokemon" EntitySet="Movimiento_Pokemon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Redes_Soc__Ident__5DCAEF64" Association="Self.FK__Redes_Soc__Ident__5DCAEF64">
+            <End Role="Entrenador" EntitySet="Entrenador" />
+            <End Role="Redes_Sociales_E" EntitySet="Redes_Sociales_E" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="pokedexFModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bitácora">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Descripción" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Identificador_E" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Entrenador" Relationship="Self.FK__Bitácora__Identi__44FF419A" FromRole="Bitácora" ToRole="Entrenador" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Núm_Cédula_C" />
+          </Key>
+          <Property Name="Núm_Cédula_C" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_C" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Núm_Teléfono" Type="Int32" Nullable="false" />
+          <Property Name="Provincia" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cantón" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Distrito" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Otras_señas" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Correo_Electrónico" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ubicación" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre_Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Cliente__Nombre___5441852A" FromRole="Cliente" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Entrenador">
+          <Key>
+            <PropertyRef Name="Identificador_E" />
+          </Key>
+          <Property Name="Identificador_E" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre_E" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Núm_Teléfono" Type="Int32" Nullable="false" />
+          <Property Name="Provincia" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cantón" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Distrito" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Otras_señas" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Correo_Electrónico" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ubicación" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sitio_Web" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre_Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Bitácora" Relationship="Self.FK__Bitácora__Identi__44FF419A" FromRole="Entrenador" ToRole="Bitácora" />
+          <NavigationProperty Name="Entrenador_Pokemon" Relationship="Self.FK__Entrenado__Ident__48CFD27E" FromRole="Entrenador" ToRole="Entrenador_Pokemon" />
+          <NavigationProperty Name="Entrenador_Pokemon_Movimiento" Relationship="Self.FK__Entrenado__Ident__4CA06362" FromRole="Entrenador" ToRole="Entrenador_Pokemon_Movimiento" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Entrenado__Nombr__37A5467C" FromRole="Entrenador" ToRole="Usuario" />
+          <NavigationProperty Name="Redes_Sociales_E" Relationship="Self.FK__Redes_Soc__Ident__5DCAEF64" FromRole="Entrenador" ToRole="Redes_Sociales_E" />
+        </EntityType>
+        <EntityType Name="Entrenador_Pokemon">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Identificador_E" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Identificador_P" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Entrenador" Relationship="Self.FK__Entrenado__Ident__48CFD27E" FromRole="Entrenador_Pokemon" ToRole="Entrenador" />
+          <NavigationProperty Name="Pokemon" Relationship="Self.FK__Entrenado__Ident__49C3F6B7" FromRole="Entrenador_Pokemon" ToRole="Pokemon" />
+        </EntityType>
+        <EntityType Name="Entrenador_Pokemon_Movimiento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Identificador_E" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Identificador_P" Type="Int32" Nullable="false" />
+          <Property Name="Código_M" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Entrenador" Relationship="Self.FK__Entrenado__Ident__4CA06362" FromRole="Entrenador_Pokemon_Movimiento" ToRole="Entrenador" />
+          <NavigationProperty Name="Movimiento" Relationship="Self.FK__Entrenado__Códig__4E88ABD4" FromRole="Entrenador_Pokemon_Movimiento" ToRole="Movimiento" />
+          <NavigationProperty Name="Pokemon" Relationship="Self.FK__Entrenado__Ident__4D94879B" FromRole="Entrenador_Pokemon_Movimiento" ToRole="Pokemon" />
+        </EntityType>
+        <EntityType Name="Movimiento">
+          <Key>
+            <PropertyRef Name="Código_M" />
+          </Key>
+          <Property Name="Código_M" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre_M" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripción" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Entrenador_Pokemon_Movimiento" Relationship="Self.FK__Entrenado__Códig__4E88ABD4" FromRole="Movimiento" ToRole="Entrenador_Pokemon_Movimiento" />
+          <NavigationProperty Name="Movimiento_Pokemon" Relationship="Self.FK__Movimient__Códig__3F466844" FromRole="Movimiento" ToRole="Movimiento_Pokemon" />
+        </EntityType>
+        <EntityType Name="Movimiento_Pokemon">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Identificador_P" Type="Int32" Nullable="false" />
+          <Property Name="Código_M" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Movimiento" Relationship="Self.FK__Movimient__Códig__3F466844" FromRole="Movimiento_Pokemon" ToRole="Movimiento" />
+          <NavigationProperty Name="Pokemon" Relationship="Self.FK__Movimient__Ident__3E52440B" FromRole="Movimiento_Pokemon" ToRole="Pokemon" />
+        </EntityType>
+        <EntityType Name="Pokemon">
+          <Key>
+            <PropertyRef Name="Identificador_P" />
+          </Key>
+          <Property Name="Identificador_P" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_P" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tipo1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Total" Type="Int32" Nullable="false" />
+          <Property Name="Salud" Type="Int32" Nullable="false" />
+          <Property Name="Ataque" Type="Int32" Nullable="false" />
+          <Property Name="Defensa" Type="Int32" Nullable="false" />
+          <Property Name="Ataque_Especial" Type="Int32" Nullable="false" />
+          <Property Name="Defensa_Especial" Type="Int32" Nullable="false" />
+          <Property Name="Velocidad" Type="Int32" Nullable="false" />
+          <Property Name="Generación" Type="Int32" Nullable="false" />
+          <Property Name="Legendario" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Entrenador_Pokemon" Relationship="Self.FK__Entrenado__Ident__49C3F6B7" FromRole="Pokemon" ToRole="Entrenador_Pokemon" />
+          <NavigationProperty Name="Entrenador_Pokemon_Movimiento" Relationship="Self.FK__Entrenado__Ident__4D94879B" FromRole="Pokemon" ToRole="Entrenador_Pokemon_Movimiento" />
+          <NavigationProperty Name="Movimiento_Pokemon" Relationship="Self.FK__Movimient__Ident__3E52440B" FromRole="Pokemon" ToRole="Movimiento_Pokemon" />
+        </EntityType>
+        <EntityType Name="Redes_Sociales_E">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Red_Social" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre_RS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre_Usuario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Identificador_E" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Entrenador" Relationship="Self.FK__Redes_Soc__Ident__5DCAEF64" FromRole="Redes_Sociales_E" ToRole="Entrenador" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Nombre_Usuario" />
+          </Key>
+          <Property Name="Nombre_Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contraseña" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rol" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK__Cliente__Nombre___5441852A" FromRole="Usuario" ToRole="Cliente" />
+          <NavigationProperty Name="Entrenadors" Relationship="Self.FK__Entrenado__Nombr__37A5467C" FromRole="Usuario" ToRole="Entrenador" />
+        </EntityType>
+        <Association Name="FK__Bitácora__Identi__44FF419A">
+          <End Role="Entrenador" Type="Self.Entrenador" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Bitácora" Type="Self.Bitácora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entrenador">
+              <PropertyRef Name="Identificador_E" />
+            </Principal>
+            <Dependent Role="Bitácora">
+              <PropertyRef Name="Identificador_E" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cliente__Nombre___5441852A">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Nombre_Usuario" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="Nombre_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Entrenado__Ident__48CFD27E">
+          <End Role="Entrenador" Type="Self.Entrenador" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Entrenador_Pokemon" Type="Self.Entrenador_Pokemon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entrenador">
+              <PropertyRef Name="Identificador_E" />
+            </Principal>
+            <Dependent Role="Entrenador_Pokemon">
+              <PropertyRef Name="Identificador_E" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Entrenado__Ident__4CA06362">
+          <End Role="Entrenador" Type="Self.Entrenador" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Entrenador_Pokemon_Movimiento" Type="Self.Entrenador_Pokemon_Movimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entrenador">
+              <PropertyRef Name="Identificador_E" />
+            </Principal>
+            <Dependent Role="Entrenador_Pokemon_Movimiento">
+              <PropertyRef Name="Identificador_E" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Entrenado__Nombr__37A5467C">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Entrenador" Type="Self.Entrenador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Nombre_Usuario" />
+            </Principal>
+            <Dependent Role="Entrenador">
+              <PropertyRef Name="Nombre_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Redes_Soc__Ident__5DCAEF64">
+          <End Role="Entrenador" Type="Self.Entrenador" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Redes_Sociales_E" Type="Self.Redes_Sociales_E" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entrenador">
+              <PropertyRef Name="Identificador_E" />
+            </Principal>
+            <Dependent Role="Redes_Sociales_E">
+              <PropertyRef Name="Identificador_E" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Entrenado__Ident__49C3F6B7">
+          <End Role="Pokemon" Type="Self.Pokemon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Entrenador_Pokemon" Type="Self.Entrenador_Pokemon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokemon">
+              <PropertyRef Name="Identificador_P" />
+            </Principal>
+            <Dependent Role="Entrenador_Pokemon">
+              <PropertyRef Name="Identificador_P" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Entrenado__Códig__4E88ABD4">
+          <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Entrenador_Pokemon_Movimiento" Type="Self.Entrenador_Pokemon_Movimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movimiento">
+              <PropertyRef Name="Código_M" />
+            </Principal>
+            <Dependent Role="Entrenador_Pokemon_Movimiento">
+              <PropertyRef Name="Código_M" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Entrenado__Ident__4D94879B">
+          <End Role="Pokemon" Type="Self.Pokemon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Entrenador_Pokemon_Movimiento" Type="Self.Entrenador_Pokemon_Movimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokemon">
+              <PropertyRef Name="Identificador_P" />
+            </Principal>
+            <Dependent Role="Entrenador_Pokemon_Movimiento">
+              <PropertyRef Name="Identificador_P" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Movimient__Códig__3F466844">
+          <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Movimiento_Pokemon" Type="Self.Movimiento_Pokemon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movimiento">
+              <PropertyRef Name="Código_M" />
+            </Principal>
+            <Dependent Role="Movimiento_Pokemon">
+              <PropertyRef Name="Código_M" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Movimient__Ident__3E52440B">
+          <End Role="Pokemon" Type="Self.Pokemon" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Movimiento_Pokemon" Type="Self.Movimiento_Pokemon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokemon">
+              <PropertyRef Name="Identificador_P" />
+            </Principal>
+            <Dependent Role="Movimiento_Pokemon">
+              <PropertyRef Name="Identificador_P" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="test1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bitácora" EntityType="Self.Bitácora" />
+          <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+          <EntitySet Name="Entrenadors" EntityType="Self.Entrenador" />
+          <EntitySet Name="Entrenador_Pokemon" EntityType="Self.Entrenador_Pokemon" />
+          <EntitySet Name="Entrenador_Pokemon_Movimiento" EntityType="Self.Entrenador_Pokemon_Movimiento" />
+          <EntitySet Name="Movimientoes" EntityType="Self.Movimiento" />
+          <EntitySet Name="Movimiento_Pokemon" EntityType="Self.Movimiento_Pokemon" />
+          <EntitySet Name="Pokemons" EntityType="Self.Pokemon" />
+          <EntitySet Name="Redes_Sociales_E" EntityType="Self.Redes_Sociales_E" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK__Bitácora__Identi__44FF419A" Association="Self.FK__Bitácora__Identi__44FF419A">
+            <End Role="Entrenador" EntitySet="Entrenadors" />
+            <End Role="Bitácora" EntitySet="Bitácora" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cliente__Nombre___5441852A" Association="Self.FK__Cliente__Nombre___5441852A">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Cliente" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Entrenado__Ident__48CFD27E" Association="Self.FK__Entrenado__Ident__48CFD27E">
+            <End Role="Entrenador" EntitySet="Entrenadors" />
+            <End Role="Entrenador_Pokemon" EntitySet="Entrenador_Pokemon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Entrenado__Ident__4CA06362" Association="Self.FK__Entrenado__Ident__4CA06362">
+            <End Role="Entrenador" EntitySet="Entrenadors" />
+            <End Role="Entrenador_Pokemon_Movimiento" EntitySet="Entrenador_Pokemon_Movimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Entrenado__Nombr__37A5467C" Association="Self.FK__Entrenado__Nombr__37A5467C">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Entrenador" EntitySet="Entrenadors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Redes_Soc__Ident__5DCAEF64" Association="Self.FK__Redes_Soc__Ident__5DCAEF64">
+            <End Role="Entrenador" EntitySet="Entrenadors" />
+            <End Role="Redes_Sociales_E" EntitySet="Redes_Sociales_E" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Entrenado__Ident__49C3F6B7" Association="Self.FK__Entrenado__Ident__49C3F6B7">
+            <End Role="Pokemon" EntitySet="Pokemons" />
+            <End Role="Entrenador_Pokemon" EntitySet="Entrenador_Pokemon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Entrenado__Códig__4E88ABD4" Association="Self.FK__Entrenado__Códig__4E88ABD4">
+            <End Role="Movimiento" EntitySet="Movimientoes" />
+            <End Role="Entrenador_Pokemon_Movimiento" EntitySet="Entrenador_Pokemon_Movimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Entrenado__Ident__4D94879B" Association="Self.FK__Entrenado__Ident__4D94879B">
+            <End Role="Pokemon" EntitySet="Pokemons" />
+            <End Role="Entrenador_Pokemon_Movimiento" EntitySet="Entrenador_Pokemon_Movimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Movimient__Códig__3F466844" Association="Self.FK__Movimient__Códig__3F466844">
+            <End Role="Movimiento" EntitySet="Movimientoes" />
+            <End Role="Movimiento_Pokemon" EntitySet="Movimiento_Pokemon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Movimient__Ident__3E52440B" Association="Self.FK__Movimient__Ident__3E52440B">
+            <End Role="Pokemon" EntitySet="Pokemons" />
+            <End Role="Movimiento_Pokemon" EntitySet="Movimiento_Pokemon" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="pokedexFModelStoreContainer" CdmEntityContainer="test1Entities">
+          <EntitySetMapping Name="Bitácora">
+            <EntityTypeMapping TypeName="pokedexFModel.Bitácora">
+              <MappingFragment StoreEntitySet="Bitácora">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+                <ScalarProperty Name="Identificador_E" ColumnName="Identificador_E" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="pokedexFModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="Núm_Cédula_C" ColumnName="Núm_Cédula_C" />
+                <ScalarProperty Name="Nombre_C" ColumnName="Nombre_C" />
+                <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+                <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+                <ScalarProperty Name="Núm_Teléfono" ColumnName="Núm_Teléfono" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Cantón" ColumnName="Cantón" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="Otras_señas" ColumnName="Otras_señas" />
+                <ScalarProperty Name="Correo_Electrónico" ColumnName="Correo_Electrónico" />
+                <ScalarProperty Name="Ubicación" ColumnName="Ubicación" />
+                <ScalarProperty Name="Nombre_Usuario" ColumnName="Nombre_Usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Entrenadors">
+            <EntityTypeMapping TypeName="pokedexFModel.Entrenador">
+              <MappingFragment StoreEntitySet="Entrenador">
+                <ScalarProperty Name="Identificador_E" ColumnName="Identificador_E" />
+                <ScalarProperty Name="Nombre_E" ColumnName="Nombre_E" />
+                <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+                <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+                <ScalarProperty Name="Núm_Teléfono" ColumnName="Núm_Teléfono" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Cantón" ColumnName="Cantón" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="Otras_señas" ColumnName="Otras_señas" />
+                <ScalarProperty Name="Correo_Electrónico" ColumnName="Correo_Electrónico" />
+                <ScalarProperty Name="Ubicación" ColumnName="Ubicación" />
+                <ScalarProperty Name="Sitio_Web" ColumnName="Sitio_Web" />
+                <ScalarProperty Name="Nombre_Usuario" ColumnName="Nombre_Usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Entrenador_Pokemon">
+            <EntityTypeMapping TypeName="pokedexFModel.Entrenador_Pokemon">
+              <MappingFragment StoreEntitySet="Entrenador_Pokemon">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Identificador_E" ColumnName="Identificador_E" />
+                <ScalarProperty Name="Identificador_P" ColumnName="Identificador_P" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Entrenador_Pokemon_Movimiento">
+            <EntityTypeMapping TypeName="pokedexFModel.Entrenador_Pokemon_Movimiento">
+              <MappingFragment StoreEntitySet="Entrenador_Pokemon_Movimiento">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Identificador_E" ColumnName="Identificador_E" />
+                <ScalarProperty Name="Identificador_P" ColumnName="Identificador_P" />
+                <ScalarProperty Name="Código_M" ColumnName="Código_M" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movimientoes">
+            <EntityTypeMapping TypeName="pokedexFModel.Movimiento">
+              <MappingFragment StoreEntitySet="Movimiento">
+                <ScalarProperty Name="Código_M" ColumnName="Código_M" />
+                <ScalarProperty Name="Nombre_M" ColumnName="Nombre_M" />
+                <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movimiento_Pokemon">
+            <EntityTypeMapping TypeName="pokedexFModel.Movimiento_Pokemon">
+              <MappingFragment StoreEntitySet="Movimiento_Pokemon">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Identificador_P" ColumnName="Identificador_P" />
+                <ScalarProperty Name="Código_M" ColumnName="Código_M" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pokemons">
+            <EntityTypeMapping TypeName="pokedexFModel.Pokemon">
+              <MappingFragment StoreEntitySet="Pokemon">
+                <ScalarProperty Name="Identificador_P" ColumnName="Identificador_P" />
+                <ScalarProperty Name="Nombre_P" ColumnName="Nombre_P" />
+                <ScalarProperty Name="Tipo1" ColumnName="Tipo1" />
+                <ScalarProperty Name="Tipo2" ColumnName="Tipo2" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Salud" ColumnName="Salud" />
+                <ScalarProperty Name="Ataque" ColumnName="Ataque" />
+                <ScalarProperty Name="Defensa" ColumnName="Defensa" />
+                <ScalarProperty Name="Ataque_Especial" ColumnName="Ataque_Especial" />
+                <ScalarProperty Name="Defensa_Especial" ColumnName="Defensa_Especial" />
+                <ScalarProperty Name="Velocidad" ColumnName="Velocidad" />
+                <ScalarProperty Name="Generación" ColumnName="Generación" />
+                <ScalarProperty Name="Legendario" ColumnName="Legendario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Redes_Sociales_E">
+            <EntityTypeMapping TypeName="pokedexFModel.Redes_Sociales_E">
+              <MappingFragment StoreEntitySet="Redes_Sociales_E">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Red_Social" ColumnName="Red_Social" />
+                <ScalarProperty Name="Nombre_RS" ColumnName="Nombre_RS" />
+                <ScalarProperty Name="Nombre_Usuario" ColumnName="Nombre_Usuario" />
+                <ScalarProperty Name="Identificador_E" ColumnName="Identificador_E" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="pokedexFModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Nombre_Usuario" ColumnName="Nombre_Usuario" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

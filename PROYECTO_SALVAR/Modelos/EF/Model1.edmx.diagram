@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c6727cbc6a1d40ff9d1e51c089664197" Name="Diagram1">
+        <EntityTypeShape EntityType="pokedexFModel.Bitácora" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pokedexFModel.Cliente" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pokedexFModel.Entrenador" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pokedexFModel.Entrenador_Pokemon" Width="1.5" PointX="5.25" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pokedexFModel.Entrenador_Pokemon_Movimiento" Width="1.5" PointX="8.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pokedexFModel.Movimiento" Width="1.5" PointX="6" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pokedexFModel.Movimiento_Pokemon" Width="1.5" PointX="8.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pokedexFModel.Pokemon" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pokedexFModel.Redes_Sociales_E" Width="1.5" PointX="5.25" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pokedexFModel.Usuario" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <AssociationConnector Association="pokedexFModel.FK__Bitácora__Identi__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="pokedexFModel.FK__Cliente__Nombre___5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="pokedexFModel.FK__Entrenado__Ident__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="pokedexFModel.FK__Entrenado__Ident__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="pokedexFModel.FK__Entrenado__Nombr__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="pokedexFModel.FK__Redes_Soc__Ident__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="pokedexFModel.FK__Entrenado__Ident__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="pokedexFModel.FK__Entrenado__Códig__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="pokedexFModel.FK__Entrenado__Ident__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="pokedexFModel.FK__Movimient__Códig__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="pokedexFModel.FK__Movimient__Ident__3E52440B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31313.79
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pokedex", "pokedex.csproj", "{AC0C7BF2-36D7-4D9E-BF8F-2FEA48E8B050}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modelos", "..\Modelos\Modelos.csproj", "{C8D6ADDD-AC77-4514-8820-9EF517A1D032}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controlador", "..\Controlador\Controlador.csproj", "{B36950F7-5D05-46A6-A14F-F615C5989941}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC0C7BF2-36D7-4D9E-BF8F-2FEA48E8B050}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC0C7BF2-36D7-4D9E-BF8F-2FEA48E8B050}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC0C7BF2-36D7-4D9E-BF8F-2FEA48E8B050}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC0C7BF2-36D7-4D9E-BF8F-2FEA48E8B050}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8D6ADDD-AC77-4514-8820-9EF517A1D032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8D6ADDD-AC77-4514-8820-9EF517A1D032}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8D6ADDD-AC77-4514-8820-9EF517A1D032}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8D6ADDD-AC77-4514-8820-9EF517A1D032}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B36950F7-5D05-46A6-A14F-F615C5989941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B36950F7-5D05-46A6-A14F-F615C5989941}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B36950F7-5D05-46A6-A14F-F615C5989941}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B36950F7-5D05-46A6-A14F-F615C5989941}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A76050AC-330C-46AC-BF89-2B85826ACD49}
+	EndGlobalSection
+EndGlobal

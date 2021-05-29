@@ -1,0 +1,102 @@
+﻿using GMap.NET;
+using GMap.NET.MapProviders;
+using GMap.NET.WindowsForms;
+using GMap.NET.WindowsForms.Markers;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace pokedex
+{
+    public partial class registroCliente : Form
+    {
+        Controlador.controladorUsuarios controladorInicio = new Controlador.controladorUsuarios();
+        GMarkerGoogle marker;
+        GMapOverlay markerOverlay;
+
+        double LatInicial = 9.9262422798561;
+        double LongInicial = -84.0921020507813;
+        public registroCliente()
+        {
+            InitializeComponent();
+            labelErrorDatos.Hide();
+            success.Hide();
+        }
+
+        private void regBtn_Click(object sender, EventArgs e)
+        {
+            if (user.Text != "" && password.Text != "" && nombre_C.Text != "" && apellido1.Text != "" && 
+                apellido2.Text != "" && telefono.Text != "" && provincia.Text != "" && canton.Text != "" && distrito.Text != ""
+                 && correo.Text != "" && cedula.Text != "")//revisa que los datos necesarios sean ingresados
+            {
+                string ubicacion = latitud.Text + " " + longitud.Text;                                                    
+                controladorInicio.RegistroCliente(user.Text, password.Text,"Invitado", nombre_C.Text, apellido1.Text, apellido2.Text, Int32.Parse(telefono.Text),
+                provincia.Text, canton.Text, distrito.Text, correo.Text, Int32.Parse(cedula.Text), otras.Text, ubicacion);//se llama al controlador
+                foreach(Control c in ActiveForm.Controls)
+                {
+                    if(c is TextBox)
+                    {
+                        c.ResetText();
+                    }
+                }
+                success.Show();
+            }
+            else
+            {
+                labelErrorDatos.Show();
+            }
+                
+        }
+
+        private void backBtn_Click(object sender, EventArgs e)
+        {   //boton de ir hacia atras
+            inicioSesion inicio = new inicioSesion();
+            ActiveForm.Hide();
+            inicio.Show();
+        }
+
+        private void labelErrorDatos_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void registroCliente_Load(object sender, EventArgs e)
+        {
+            gMapControl.DragButton = MouseButtons.Left;
+            gMapControl.CanDragMap = true;
+            gMapControl.MapProvider = GMapProviders.GoogleMap;
+            gMapControl.Position = new PointLatLng(LatInicial, LongInicial);
+            gMapControl.MinZoom = 0;
+            gMapControl.MaxZoom = 24;
+            gMapControl.Zoom = 9;
+            gMapControl.AutoScroll = true;
+
+            markerOverlay = new GMapOverlay("Marcador");
+            marker = new GMarkerGoogle(new PointLatLng(LatInicial, LongInicial), GMarkerGoogleType.red);
+            markerOverlay.Markers.Add(marker);
+
+            marker.ToolTipMode = MarkerTooltipMode.Always;
+            marker.ToolTipText = string.Format("Ubicacion: \n Latitud: {0} \n Longitud {1}", LatInicial, LongInicial);
+
+            gMapControl.Overlays.Add(markerOverlay);
+        }
+
+        private void gMapControl_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            double lat = gMapControl.FromLocalToLatLng(e.X, e.Y).Lat;
+            double lng = gMapControl.FromLocalToLatLng(e.X, e.Y).Lng;
+
+            int late = Convert.ToInt32(lat);
+            int lnge = Convert.ToInt32(lng);
+            longitud.Text = lnge.ToString();
+            latitud.Text = late.ToString();
+            marker.Position = new PointLatLng(lat, lng);
+        }
+    }
+}
